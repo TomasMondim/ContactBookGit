@@ -99,7 +99,7 @@ public class ContactBook {
             return null;
         }
     }
-    private int searchPhone(int phone) {
+    public int searchPhone(int phone) {
         int i = 0;
         int result = -1;
         boolean found = false;
