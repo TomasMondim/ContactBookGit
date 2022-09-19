@@ -15,6 +15,7 @@ public class Main {
     public static final String LIST_CONTACTS  = "LC";
     public static final String EXISTS_PHONE   = "EP";
     public static final String QUIT           = "Q";
+    public static final String GET_CONTACT    = "GN";
 
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
@@ -27,6 +28,7 @@ public class Main {
     public static final String NOT_REPEATED_PHONE_MSG = "All contacts have different phone numbers.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
+    public static final String PHONE_NOT_EXIST = "Phone number does not exist.";
 
 
 
@@ -58,6 +60,9 @@ public class Main {
                     break;
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
+                    break;
+                case GET_CONTACT:
+                    lookForContact(in, cBook);
                     break;
                 case EXISTS_PHONE:
                     checkRepeatedPhone(cBook);
@@ -169,9 +174,10 @@ public class Main {
         phone = in.nextInt(); in.nextLine();
         Contact c = cBook.getContact(phone);
         if(c != null){
-            System.out.println(c.getName() + "; " + c.getEmail() + "; " + c.getPhone());
+            System.out.println(c.getName());
         }else {
-            System.out.println("Phone number does not exist.");
+            System.out.println(PHONE_NOT_EXIST);
         }
     }
+
 }
